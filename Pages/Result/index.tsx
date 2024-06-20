@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { styles } from "./styles";
 import { PersonalidadePokemonProps, getPersonalidadePokemon } from "../../services/apiPersonalidadePokemon";
 import { Mensagem } from "../../components/Mensagem/mensagem";
+import SocialIcons from "../../components/SocialIcons/SocialIcons";
 
 export default function Result( ) {
    const [ personalidadePokemon, setPersonalidadePokemon ] = useState<PersonalidadePokemonProps>();
@@ -80,6 +81,7 @@ export default function Result( ) {
           textoPrincipal={"Vc é um " + personalidadePokemon.name}
           textoAuxiliar={personalidadePokemon.frasePersonalidade}
         />
+        <SocialIcons />
       </LinearGradient>
     </SafeAreaView>
   );

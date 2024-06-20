@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
 const months = [
@@ -8,34 +7,50 @@ const months = [
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
 ];
 
-const years = Array.from(new Array(100), (val, index) => index + 1920); 
+const currentYear = new Date().getFullYear();
 
 const MonthYear = () => {
     const [selectedMonth, setSelectedMonth] = useState<string>(months[0]);
-    const [selectedYear, setSelectedYear] = useState<number>(years[0]);
+    const [selectedYear, setSelectedYear] = useState<number>(currentYear);
+
+    const handleMonthPress = (month: string) => {
+        setSelectedMonth(month);
+    };
+
+    const incrementYear = () => {
+        setSelectedYear(prevYear => prevYear + 1);
+    };
+
+    const decrementYear = () => {
+        setSelectedYear(prevYear => prevYear - 1);
+    };
 
     return (
         <View style={styles.container}>
-            <Picker
-                selectedValue={selectedMonth}
-                style={styles.picker}
-                onValueChange={(itemValue: string) => setSelectedMonth(itemValue)}>
+            <View style={styles.monthContainer}>
                 {months.map((month, index) => (
-                    <Picker.Item key={index} label={month} value={month} />
+                    <TouchableOpacity
+                        key={index}
+                        style={[styles.monthButton, selectedMonth === month && styles.selectedMonthButton]}
+                        onPress={() => handleMonthPress(month)}
+                    >
+                        <Text style={styles.monthButtonText}>{month}</Text>
+                    </TouchableOpacity>
                 ))}
-            </Picker>
-            <Picker
-                selectedValue={selectedYear}
-                style={styles.picker}
-                onValueChange={(itemValue: number) => setSelectedYear(itemValue)}>
-                {years.map((year, index) => (
-                    <Picker.Item key={index} label={year.toString()} value={year} />
-                ))}
-            </Picker>
+            </View>
+            <View style={styles.yearButtonContainer}>
+                <TouchableOpacity onPress={decrementYear} style={styles.arrowButton}>
+                    <Text style={styles.arrowText}>{"<"}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.yearDisplayButton}>
+                    <Text style={styles.yearDisplayText}>{selectedYear}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={incrementYear} style={styles.arrowButton}>
+                    <Text style={styles.arrowText}>{">"}</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
-
-
 
 export default MonthYear;

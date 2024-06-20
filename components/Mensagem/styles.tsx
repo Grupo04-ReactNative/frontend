@@ -2,11 +2,13 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        justifyContent: "flex-end",
+    
+        justifyContent: "flex-start",
         alignItems: "center",
         width: '100%',
-        height: '30%',
+        height: '40%',
         padding: 16,
+        
 
     },
     boldText: {
@@ -14,6 +16,10 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         color: "#fff"
+    },
+    scrollContainer: {
+        flex: 1,
+        marginTop: 8,
     },
     normalText: {
         fontSize: 36,

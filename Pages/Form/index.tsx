@@ -8,15 +8,16 @@ import { StackParamList } from "../../Routes/HomeStackRoutes";
 import { Mensagem } from "../../components/Mensagem/mensagem";
 import { TextInput2 } from "../../components/TextInput/textInput";
 import MonthYear from "../../components/MonthYear/monthYear";
-
-
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 
 type FormScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Form'>;
 
 export default function Form() {
-    // remove a barra de navegação do topo
+    
     const navigation = useNavigation<FormScreenNavigationProp>();
+    const { username } = useContext(UserContext);
 
     return (
       <SafeAreaView style={styles.outerContainer}>
@@ -25,7 +26,7 @@ export default function Form() {
          style={styles.gradientContainer}
        >
        <Mensagem
-              textoPrincipal="Olá!"
+              textoPrincipal={"Olá, " + username + "!"}
               textoAuxiliar="Insira seu mês e ano de nascimento,
               e deixe-nos buscar o Pokémon DA SUA ALMA."
        />

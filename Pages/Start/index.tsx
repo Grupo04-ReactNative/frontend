@@ -11,9 +11,10 @@ import { StackParamList } from "../../Routes/HomeStackRoutes";
 
 type StartScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Start'>;
 
-
 export default function Start() {
+
     const navigation = useNavigation<StartScreenNavigationProp>()
+    
     return (
       <SafeAreaView style={styles.outerContainer}>
       <LinearGradient

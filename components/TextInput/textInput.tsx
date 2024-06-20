@@ -1,12 +1,17 @@
-import { TextInput, View } from "react-native"
+import { TextInput, TextInputProps, View } from "react-native"
 import { styles } from "./styles"
-import { useEffect, useRef } from "react";
 
-export const TextInput2 = () =>{
+interface TextInput2Props extends TextInputProps {
+
+}
+export const TextInput2 = (props : TextInput2Props) =>{
   return  <View style={styles.container}> 
-    <TextInput style={styles.input}
-    placeholder="Nome"
-    />
+      <TextInput 
+      {...props}
+      autoFocus={true} 
+      style={styles.input}
+      placeholder="Nome"
+      />
   </View>
 }
 

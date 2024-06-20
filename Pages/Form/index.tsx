@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { SafeAreaView, Text, TextInput, View } from "react-native";
-import Logo from "../../components/Logo/logo";
+import { SafeAreaView, } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { styles } from "./styles";
 import Button from "../../components/Button/button";
@@ -8,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 import { StackParamList } from "../../Routes/HomeStackRoutes";
 import { Mensagem } from "../../components/Mensagem/mensagem";
-import { FormMes } from "../../components/FormMes/formMes";
+import { TextInput2 } from "../../components/TextInput/textInput";
 import MonthYear from "../../components/MonthYear/monthYear";
 
 
@@ -27,15 +25,11 @@ export default function Form() {
          style={styles.gradientContainer}
        >
        <Mensagem
-              textoPrincipal="Bem vindo!"
+              textoPrincipal="Olá!"
               textoAuxiliar="Insira seu mês e ano de nascimento,
               e deixe-nos buscar o Pokémon DA SUA ALMA."
        />
-      
     
-      
-      <FormMes/>
-
       <MonthYear/>
 
        <Button 

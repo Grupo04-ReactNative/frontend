@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native";
-import Logo from "../../components/Logo/logo";
 import { LinearGradient } from "expo-linear-gradient";
 import { styles } from "./styles";
 import Button from "../../components/Button/button";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 import { StackParamList } from "../../Routes/HomeStackRoutes";
+import { TextInput2 } from "../../components/TextInput/textInput";
+import { Mensagem } from "../../components/Mensagem/mensagem";
 
 
-type StartScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Start'>;
+type NomeScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Nome'>;
 
 
-export default function Start() {
-    const navigation = useNavigation<StartScreenNavigationProp>()
+export default function Nome() {
+    const navigation = useNavigation<NomeScreenNavigationProp>()
     return (
       <SafeAreaView style={styles.outerContainer}>
       <LinearGradient
@@ -21,11 +21,18 @@ export default function Start() {
          style={styles.gradientContainer}
        >
        
-        <Logo logoText={'PokeMatch'}/>
+
+       <Mensagem
+              textoPrincipal="Bem vindo!"
+              textoAuxiliar="Insira seu nome."
+       />
+        <TextInput2/>
+
+
         <Button 
                 isOutlined={false}
-                buttonText={'Começar'}
-                onPress={() => { navigation.navigate('Nome')}}
+                buttonText={'Continuar'}
+                onPress={() => { navigation.navigate('Form')}}
               />
               
      </LinearGradient>

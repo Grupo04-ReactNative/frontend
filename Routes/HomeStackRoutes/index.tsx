@@ -3,9 +3,11 @@ import Start from '../../Pages/Start';
 import Form from '../../Pages/Form';
 import { NativeStackScreenProps } from 'react-native-screens/lib/typescript/native-stack/types';
 import Result from '../../Pages/Result';
+import Nome from '../../Pages/Nome';
 
 export type StackParamList = {
     Start: undefined,
+    Nome: undefined,
     Form: undefined,
     Result: undefined
 }
@@ -21,6 +23,10 @@ export function HomeStackRoutes() {
             options={{ headerShown: false }}
             name="Start" 
             component={Start} />
+            <Stack.Screen 
+            options={{ headerShown: false }}
+            name="Nome" 
+            component={Nome} />
             <Stack.Screen 
              options={{ headerShown: false }}
             name="Form" 

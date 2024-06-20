@@ -28,7 +28,7 @@ const ConfiguracoesComponent = ({ data, selectedOption, onSelectOption }: {
           keyExtractor={(item) => item.id}
           renderItem={renderItem}
           ItemSeparatorComponent={() => <View style={styles.separator} />}
-          ListHeaderComponent={() => <Text style={styles.header}>Configurações</Text>}
+          ListHeaderComponent={() => <Text style={styles.header}>Informações</Text>}
       />
   );
 };

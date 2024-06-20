@@ -1,8 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Start from '../../Pages/Start';
 import Settings from '../../Pages/Settings';
-import { Image } from "react-native";
-import logo from '../../assets/pokematch-logo.png';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { HomeStackRoutes } from '../HomeStackRoutes';
 

@@ -49,7 +49,19 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10
-        
-      }
-     
+      },
+      gradientContainer2: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+      itemContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 10,
+      },
+      selectedItem: {
+        backgroundColor: '#d3d3d3', // ou qualquer cor que deseje para o item selecionado
+      },
+      
 });

@@ -1,20 +1,36 @@
-import React, { useEffect } from "react";
-import { SafeAreaView, Text } from "react-native";
+import React, { useState } from 'react';
+import { SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import ConfiguracoesComponent from "../Settings/ConfiguracoesComponent";
+import ConfiguracoesComponent from "../../components/settings/ConfiguracoesComponent";
 import { styles } from "./styles";
 import Spacer from '../../components/Spacer/spacer';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-
-
+import Informacoes from '../../components/settings/Informacoes'; 
+import Privacidade from '../../components/settings/Privacidade';
+import Faleconosco from '../../components/settings/Faleconosco';
 
 export default function Settings() {
+  const [selectedOption, setSelectedOption] = useState('Notificações');
+
   const data = [
-    { id: '1', title: 'Notificações', icon: <Ionicons name="notifications-off" size={24} color="black" /> },
-    { id: '2', title: 'Idioma', icon: <Ionicons name="globe" size={24} color="black" />},
+    { id: '1', title: 'Fale Conosco', icon: <Ionicons name="notifications-off" size={24} color="black" /> },
+    { id: '2', title: 'Informações', icon: <Ionicons name="information-circle-outline" size={24} color="black" />},
     { id: '3', title: 'Privacidade', icon: <MaterialIcons name="privacy-tip" size={24} color="black" /> },
   ];
+
+  const renderContent = () => {
+    switch (selectedOption) {
+      case 'Fale Conosco':
+        return <Faleconosco />;
+      case 'Informações':
+        return <Informacoes />;
+      case 'Privacidade':
+        return <Privacidade />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <SafeAreaView style={styles.outerContainer}>
@@ -22,8 +38,13 @@ export default function Settings() {
         colors={['#2403EC', '#B51AAD', '#EEC122']}
         style={styles.gradientContainer}
       >
-        <Spacer lines={10} />
-        <ConfiguracoesComponent data={data} />
+        <Spacer lines={5} />
+        <ConfiguracoesComponent
+          data={data}
+          selectedOption={selectedOption}
+          onSelectOption={setSelectedOption}
+        />
+        {renderContent()}
       </LinearGradient>
     </SafeAreaView>
   );

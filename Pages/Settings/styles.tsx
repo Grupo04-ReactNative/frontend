@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
         padding: 10,
       },
       selectedItem: {
-        backgroundColor: '#d3d3d3', // ou qualquer cor que deseje para o item selecionado
+        backgroundColor: 'rgba(211, 211, 211, 0.5)', 
       },
       
 });

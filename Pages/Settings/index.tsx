@@ -15,17 +15,17 @@ export default function Settings() {
 
   const data = [
     { id: '1', title: 'Fale Conosco', icon: <Ionicons name="notifications-off" size={24} color="black" /> },
-    { id: '2', title: 'Informações', icon: <Ionicons name="information-circle-outline" size={24} color="black" />},
-    { id: '3', title: 'Privacidade', icon: <MaterialIcons name="privacy-tip" size={24} color="black" /> },
+    { id: '2', title: 'Sobre o aplicativo', icon: <Ionicons name="information-circle-outline" size={24} color="black" />},
+    { id: '3', title: 'Sobre Nós', icon: <MaterialIcons name="privacy-tip" size={24} color="black" /> },
   ];
 
   const renderContent = () => {
     switch (selectedOption) {
       case 'Fale Conosco':
         return <Faleconosco />;
-      case 'Informações':
+      case 'Sobre o aplicativo':
         return <Informacoes />;
-      case 'Privacidade':
+      case 'Sobre Nós':
         return <Privacidade />;
       default:
         return null;

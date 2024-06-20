@@ -8,6 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 import { StackParamList } from "../../Routes/HomeStackRoutes";
 
+
 type StartScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Start'>;
 
 

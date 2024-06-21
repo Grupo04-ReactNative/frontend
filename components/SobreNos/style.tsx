@@ -1,33 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 const styles2 = StyleSheet.create({
-    container: {
-        flexDirection: 'column',
-        width: '80%',
-        overflow: 'hidden',
-        justifyContent: 'flex-start',
-       alignItems: "center",
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 10,
-    },
     text: {
         fontSize: 16,
         marginBottom: 5,
     },
     gradientContainer2: {
-        flex: 1,
+        flex: 9,
         justifyContent: 'center',
         alignItems: 'center',
       },
-      selectedItem: {
-        backgroundColor: '#d3d3d3',  
-      },
       profileContainer: {
         alignItems: 'center',
-        //marginVertical: 16,
       },
       image: {
           width: 100,
@@ -59,9 +43,7 @@ const styles2 = StyleSheet.create({
         width: '100%',
         overflow: 'hidden',
         justifyContent: 'flex-start',
-        alignItems: "center",
-        
-        
+        alignItems: "center",  
     },
         
   });

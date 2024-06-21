@@ -1,51 +1,51 @@
 import React, { useState } from 'react';
-import { SafeAreaView } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import ConfiguracoesComponent from "../../components/settings/ConfiguracoesComponent";
-import { styles } from "./styles";
+import { SafeAreaView } from 'react-native';
+import GradientBackground from '../../components/GradientBackground/GradientBackground';
+import { styles } from './styles';
 import Spacer from '../../components/Spacer/spacer';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Informacoes from '../../components/settings/Informacoes'; 
-import Privacidade from '../../components/settings/Privacidade';
-import Faleconosco from '../../components/settings/Faleconosco';
+import ConfigList, { ConfigItemData } from '../../components/configList/Configlist';
+import FaleConosco from '../../components/FaleConosco/FaleConosco';
+import Sobre from '../../components/Sobre/Sobre'; 
+import SobreNos from '../../components/SobreNos/SobreNos';
 
-export default function Settings() {
-  const [selectedOption, setSelectedOption] = useState('Notificações');
+const SettingsScreen: React.FC = () => {
+    const [selectedOption, setSelectedOption] = useState<string>('Notificações');
 
-  const data = [
-    { id: '1', title: 'Fale Conosco', icon: <Ionicons name="notifications-off" size={24} color="black" /> },
-    { id: '2', title: 'Sobre o aplicativo', icon: <Ionicons name="information-circle-outline" size={24} color="black" />},
-    { id: '3', title: 'Sobre Nós', icon: <MaterialIcons name="privacy-tip" size={24} color="black" /> },
-  ];
+    const data: ConfigItemData[] = [
+        { id: '1', title: 'Fale Conosco', icon: 'inbox' },
+        { id: '2', title: 'Sobre o aplicativo', icon: 'information-circle-outline' },
+        { id: '3', title: 'Sobre Nós', icon: 'team' },
+    ];
 
-  const renderContent = () => {
-    switch (selectedOption) {
-      case 'Fale Conosco':
-        return <Faleconosco />;
-      case 'Sobre o aplicativo':
-        return <Informacoes />;
-      case 'Sobre Nós':
-        return <Privacidade />;
-      default:
-        return null;
-    }
-  };
+    const renderContent = () => {
+        switch (selectedOption) {
+            case 'Fale Conosco':
+                return <FaleConosco />;
+            case 'Sobre o aplicativo':
+                return <Sobre />;
+            case 'Sobre Nós':
+                return <SobreNos />;
+            default:
+                return null;
+        }
+    };
 
-  return (
-    <SafeAreaView style={styles.outerContainer}>
-      <LinearGradient
-        colors={['#2403EC', '#B51AAD', '#EEC122']}
-        style={styles.gradientContainer}
-      >
-        <Spacer lines={5} />
-        <ConfiguracoesComponent
-          data={data}
-          selectedOption={selectedOption}
-          onSelectOption={setSelectedOption}
-        />
-        {renderContent()}
-      </LinearGradient>
-    </SafeAreaView>
-  );
-}
+    return (
+        <SafeAreaView style={styles.outerContainer}>
+            <GradientBackground
+                colors={['#2403EC', '#B51AAD', '#EEC122']}
+                style={styles.gradientContainer}
+            >
+                <Spacer lines={5} />
+                <ConfigList 
+                    data={data}
+                    selectedOption={selectedOption}
+                    onSelectOption={setSelectedOption}
+                />
+                {renderContent()}
+            </GradientBackground>
+        </SafeAreaView>
+    );
+};
+
+export default SettingsScreen;

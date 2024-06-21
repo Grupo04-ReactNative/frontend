@@ -31,18 +31,20 @@ export default function Nome() {
               textoAuxiliar="Insira seu nome."
        />
         <TextInput2
-
+          value={username}
           onChangeText={(e) => {
             updateUsername(e);
             console.log('Username updated to:', e);
           }}
         
         />
-        <Button 
-                isOutlined={false}
-                buttonText={'Continuar'}
-                onPress={() => { navigation.navigate('Form')}}
-              />
+         {username != '' && 
+          <Button 
+            isOutlined={false}
+            buttonText={'Continuar'}
+            onPress={() => { navigation.navigate('Form')}}
+        />
+        }
               
      </LinearGradient>
   </SafeAreaView>

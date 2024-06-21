@@ -8,18 +8,24 @@ interface ContextProps {
 interface UserContextType {
     username: string;
     updateUsername: (newUsername: string) => Promise<void>;
+    userMonth: string;
+    updateUserMonth: (newUserMonth: string) => Promise<void>;
 }
 
 const defaultUserContext: UserContextType = {
     username: '',
     updateUsername: async () => {},
-};
+    userMonth:'',
+    updateUserMonth: async () => {},
+}
+
 
 export const UserContext = createContext(defaultUserContext);
 
 export const UserProvider = ({children} : ContextProps) => {
 
     const [username, setUsername] = useState<string>('');
+    const [userMonth, setUserMonth] = useState<string>('');
 
     const fetchUsername = async () => {
         try {
@@ -32,8 +38,20 @@ export const UserProvider = ({children} : ContextProps) => {
         }
     };
 
+    const fetchUserMonth = async () => {
+      try {
+        const storedUserMonth = await AsyncStorage.getItem('userMonth');
+        if (storedUserMonth) {
+          setUserMonth(storedUserMonth);
+        }
+      } catch (error) {
+        console.error('Failed to load userMonth:', error);
+      }
+  };
+
     useEffect(() => {
         fetchUsername();
+        fetchUserMonth();
     }, [])
 
     const updateUsername = async (newUsername : string) => {
@@ -46,8 +64,18 @@ export const UserProvider = ({children} : ContextProps) => {
         }
     };
 
+    const updateUserMonth = async (newUserMonth : string) => {
+      try {
+        await AsyncStorage.setItem('userMonth', newUserMonth);
+        setUserMonth(newUserMonth);
+        console.log('Setting userMonth!');
+      } catch (error) {
+        console.error('Failed to save userMonth:', error);
+      }
+  };
+
     return <UserContext.Provider
-            value={{ username, updateUsername }}
+            value={{ username, updateUsername, userMonth, updateUserMonth }}
         >
         {children}
 

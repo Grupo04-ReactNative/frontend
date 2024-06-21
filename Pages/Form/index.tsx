@@ -6,18 +6,24 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/native-stack/types";
 import { StackParamList } from "../../Routes/HomeStackRoutes";
 import { Mensagem } from "../../components/Mensagem/mensagem";
-import { TextInput2 } from "../../components/TextInput/textInput";
-import MonthYear from "../../components/MonthYear/monthYear";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import Month from "../../components/Month/month";
+
+
 
 
 type FormScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Form'>;
 
+const months = [
+  'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+  'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+];
+
 export default function Form() {
     
     const navigation = useNavigation<FormScreenNavigationProp>();
-    const { username } = useContext(UserContext);
+    const { username, userMonth, updateUserMonth } = useContext(UserContext);
 
     return (
       <SafeAreaView style={styles.outerContainer}>
@@ -30,14 +36,20 @@ export default function Form() {
               textoAuxiliar="Insira seu mês e ano de nascimento,
               e deixe-nos buscar o Pokémon DA SUA ALMA."
        />
-    
-      <MonthYear/>
 
-       <Button 
-                isOutlined={false}
-                buttonText={'Enviar'}
-                onPress={() => { navigation.navigate('Result')}}
-              />
+        <Month 
+              userMonthIndex={months.findIndex((month) => month == userMonth)}
+              updateUserMonth={updateUserMonth}
+               months={months} />
+    
+        {userMonth != '' && 
+          <Button 
+            isOutlined={false}
+            buttonText={'Enviar'}
+            onPress={() => { navigation.navigate('Result')}}
+        />
+        }
+
               
      </LinearGradient>
   </SafeAreaView>

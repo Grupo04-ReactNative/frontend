@@ -78,6 +78,7 @@ export default function Result() {
                 <SocialIcons 
                     name={personalidadePokemon.name} 
                     frase={personalidadePokemon.frasePersonalidade} 
+                    imagem={validSprites[0]}
                 />
             </LinearGradient>
         </SafeAreaView>

@@ -1,4 +1,4 @@
-import { SafeAreaView } from "react-native";
+import { ActivityIndicator, SafeAreaView, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { styles } from "./styles";
 import Button from "../../components/Button/button";
@@ -7,8 +7,9 @@ import { NativeStackNavigationProp } from "react-native-screens/lib/typescript/n
 import { StackParamList } from "../../Routes/HomeStackRoutes";
 import { TextInput2 } from "../../components/TextInput/textInput";
 import { Mensagem } from "../../components/Mensagem/mensagem";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../context/UserContext";
+import { validarInputComSenseDetect } from "../../services/apiSenseDetect";
 
 
 type NomeScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Nome'>;
@@ -16,8 +17,28 @@ type NomeScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Nome'
 export default function Nome() {
 
     const { username, updateUsername } = useContext(UserContext);
-
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [errorMessage, setErrorMessage] = useState<string>('');
     const navigation = useNavigation<NomeScreenNavigationProp>()
+
+    const handleValidation = async () => {
+      setIsLoading(true)
+      try {
+        const response = await validarInputComSenseDetect(username);
+        if (response.data.status === "allowed") {
+          navigation.navigate('Form');
+        } else {
+          console.log('respose data ', response.data.status);
+          setErrorMessage('Tem certeza que o seu nome é ' + username + ' ?');
+        }
+      } catch (e) {
+        console.error('Falha ao validar com SenseDetect:', e);
+        setErrorMessage('Ocorreu um erro!');
+
+      } finally {
+        setIsLoading(false);
+      }
+    }
     
     return (
       <SafeAreaView style={styles.outerContainer}>
@@ -36,15 +57,16 @@ export default function Nome() {
             updateUsername(e);
             console.log('Username updated to:', e);
           }}
-        
         />
-         {username != '' && 
+        {errorMessage != '' && <Text style={styles.errorText}>{errorMessage}</Text>}
+        {username != '' && 
           <Button 
             isOutlined={false}
             buttonText={'Continuar'}
-            onPress={() => { navigation.navigate('Form')}}
+            onPress={handleValidation}
         />
         }
+        {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
               
      </LinearGradient>
   </SafeAreaView>

@@ -11,7 +11,7 @@ export interface PersonalidadePokemonProps {
 }
 
 export function getPersonalidadePokemon() : Promise<AxiosResponse<PersonalidadePokemonProps, any>> {
-    console.log('Executando requisição');
+    console.log('Executando requisição para a API PersonalidadePokemon');
     const url = "personalidade-pokemon"
     return apiPersonalidadePokemon.get(url);
 }

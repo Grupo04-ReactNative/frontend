@@ -16,7 +16,7 @@ interface ConfigListProps {
   onSelectOption: (option: string) => void;
 }
 
-const ConfigList: React.FC<ConfigListProps> = ({ data, selectedOption, onSelectOption }) => {
+const ConfigList = ({ data, selectedOption, onSelectOption }:ConfigListProps) => {
   return (
     <FlatList
       data={data}

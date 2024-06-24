@@ -11,7 +11,7 @@ interface ConfigItemProps {
   onSelectOption: (option: string) => void;
 }
 
-const ConfigItem: React.FC<ConfigItemProps> = ({ item, selectedOption, onSelectOption }) => {
+const ConfigItem = ({ item, selectedOption, onSelectOption }: ConfigItemProps) => {
   const handlePress = () => {
     onSelectOption(item.title);
   };

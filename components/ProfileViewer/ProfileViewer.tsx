@@ -12,12 +12,15 @@ interface ProfileViewerProps {
     profiles: Profile[];
 }
 
-const ProfileViewer: React.FC<ProfileViewerProps> = ({ profiles }) => {
+const ProfileViewer = ({ profiles }: ProfileViewerProps) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handlePrev = () => {
         if (currentIndex > 0) {
             setCurrentIndex(prevIndex => prevIndex - 1);
+        }
+        else {
+            setCurrentIndex(prevIndex => profiles.length -1)
         }
     };
 
@@ -25,15 +28,18 @@ const ProfileViewer: React.FC<ProfileViewerProps> = ({ profiles }) => {
         if (currentIndex < profiles.length - 1) {
             setCurrentIndex(prevIndex => prevIndex + 1);
         }
+        else {
+            setCurrentIndex(0);
+        }
     };
 
     return (
         <View style={styles.gradientContainer2}>
             <View style={styles.navigationContainer}>
-                <TouchableOpacity style={styles.button} onPress={handlePrev} disabled={currentIndex === 0}>
+                <TouchableOpacity style={styles.button} onPress={handlePrev} >
                     <Text style={styles.buttonText}>{'<'}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={handleNext} disabled={currentIndex === profiles.length - 1}>
+                <TouchableOpacity style={styles.button} onPress={handleNext} >
                     <Text style={styles.buttonText}>{'>'}</Text>
                 </TouchableOpacity>
             </View>

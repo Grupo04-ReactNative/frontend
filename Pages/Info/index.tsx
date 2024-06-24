@@ -8,7 +8,7 @@ import FaleConosco from '../../components/FaleConosco/FaleConosco';
 import Sobre from '../../components/Sobre/Sobre'; 
 import SobreNos from '../../components/SobreNos/SobreNos';
 
-const SettingsScreen: React.FC = () => {
+const InfoScreen: React.FC = () => {
     const [selectedOption, setSelectedOption] = useState<string>('Notificações');
 
     const data: ConfigItemData[] = [
@@ -48,4 +48,4 @@ const SettingsScreen: React.FC = () => {
     );
 };
 
-export default SettingsScreen;
+export default InfoScreen;

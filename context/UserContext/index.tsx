@@ -10,6 +10,7 @@ interface UserContextType {
     updateUsername: (newUsername: string) => Promise<void>;
     userMonth: string;
     updateUserMonth: (newUserMonth: string) => Promise<void>;
+    clearUserInfo: () => Promise<void>;
 }
 
 const defaultUserContext: UserContextType = {
@@ -17,6 +18,7 @@ const defaultUserContext: UserContextType = {
     updateUsername: async () => {},
     userMonth:'',
     updateUserMonth: async () => {},
+    clearUserInfo: async () => {},
 }
 
 
@@ -74,8 +76,19 @@ export const UserProvider = ({children} : ContextProps) => {
       }
   };
 
+  const clearUserInfo = async () => {
+      try {
+        console.log('Removing user info!');
+        await AsyncStorage.removeItem('username');
+        setUsername('')
+        await AsyncStorage.removeItem('userMonth');
+        setUserMonth('')
+      } catch (error) {
+        console.error('Failed to remove user info:', error);
+      }
+  };
     return <UserContext.Provider
-            value={{ username, updateUsername, userMonth, updateUserMonth }}
+            value={{ username, updateUsername, userMonth, updateUserMonth, clearUserInfo }}
         >
         {children}
 

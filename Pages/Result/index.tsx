@@ -67,7 +67,7 @@ export default function Result() {
             <LinearGradient colors={['#2403EC', '#B51AAD', '#EEC122']} style={styles.gradientContainer}>
                 <Carrossel images={validSprites} />
                 <Mensagem
-                    textoPrincipal={"Você é um " + personalidadePokemon.name}
+                    textoPrincipal={"Você é um " + personalidadePokemon.name.toUpperCase()}
                     textoAuxiliar={personalidadePokemon.frasePersonalidade}
                 />
                 <SocialIcons 

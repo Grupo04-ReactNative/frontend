@@ -1,23 +1,14 @@
 import { StyleSheet } from 'react-native';
 
-const styles2 = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
-        width: '80%',
-        overflow: 'hidden',
+        flex: 9,
         justifyContent: 'center',
-        alignItems: "center",
-    },
-    title: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        marginBottom: 10,
+        alignItems: 'center',
+        padding: 16,
         textAlign: 'center'
     },
-    text: {
-        fontSize: 16,
-        marginBottom: 5,
-        textAlign: 'center'
-    },
-  });
+});
 
-  export { styles2 };
+
+  export { styles };

@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { styles } from '../configItem/style';
-import { ConfigItemData } from '../configList/Configlist';
+import { ConfigItemData } from '../ConfigList/Configlist';
 
 interface ConfigItemProps {
   item: ConfigItemData;

@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-native';
 import GradientBackground from '../../components/GradientBackground/GradientBackground';
 import { styles } from './styles';
 import Spacer from '../../components/Spacer/spacer';
-import ConfigList, { ConfigItemData } from '../../components/configList/Configlist';
+import ConfigList, { ConfigItemData } from '../../components/ConfigList/Configlist';
 import FaleConosco from '../../components/FaleConosco/FaleConosco';
 import Sobre from '../../components/Sobre/Sobre'; 
 import SobreNos from '../../components/SobreNos/SobreNos';

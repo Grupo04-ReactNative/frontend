@@ -1,23 +1,16 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import AboutText from '../../components/AboutText/AboutText';
+import AboutText from '../AboutText/aboutText';
+import { styles } from './styles';
 
-const Sobre: React.FC = () => {
+
+const Sobre = () => {
     return (
         <View style={styles.container}>
-            <AboutText />
+            <AboutText/>
         </View>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 9,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 16,
-        textAlign: 'center'
-    },
-});
 
 export default Sobre;

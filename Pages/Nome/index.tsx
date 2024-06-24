@@ -17,6 +17,7 @@ type NomeScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Nome'
 export default function Nome() {
 
     const { username, updateUsername } = useContext(UserContext);
+    const [ input, setInput ] =  useState<string>(username);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>('');
     const navigation = useNavigation<NomeScreenNavigationProp>()
@@ -24,12 +25,13 @@ export default function Nome() {
     const handleValidation = async () => {
       setIsLoading(true)
       try {
-        const response = await validarInputComSenseDetect(username);
+        const response = await validarInputComSenseDetect(input);
         if (response.data.status === "allowed") {
+          updateUsername(input)
           navigation.navigate('Form');
         } else {
           console.log('respose data ', response.data.status);
-          setErrorMessage('Tem certeza que o seu nome é ' + username + ' ?');
+          setErrorMessage('Tem certeza que o seu nome é ' + input + ' ?');
         }
       } catch (e) {
         console.error('Falha ao validar com SenseDetect:', e);
@@ -52,14 +54,11 @@ export default function Nome() {
               textoAuxiliar="Insira seu nome."
        />
         <TextInput2
-          value={username}
-          onChangeText={(e) => {
-            updateUsername(e);
-            console.log('Username updated to:', e);
-          }}
+          value={input}
+          onChangeText={setInput}
         />
         {errorMessage != '' && <Text style={styles.errorText}>{errorMessage}</Text>}
-        {username != '' && 
+        {input != '' && 
           <Button 
             isOutlined={false}
             buttonText={'Continuar'}

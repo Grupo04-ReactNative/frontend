@@ -25,7 +25,7 @@ const profiles: { name: string; image: ImageSourcePropType; description: string 
     }
 ];
 
-const SobreNos: React.FC = () => {
+const SobreNos = () => {
     return (
         <ProfileViewer profiles={profiles} />
     );

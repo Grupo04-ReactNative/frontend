@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, View } from 'react-native';
 import ConfigItem from '../configItem/ConfigItem';
 import Header from '../Header/Header';
-import { styles } from '../configList/style';
+import { styles } from './style';
 
 export interface ConfigItemData {
   id: string;

@@ -1,7 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Settings from '../../Pages/Settings';
+import Info from '../../Pages/Info';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { HomeStackRoutes } from '../HomeStackRoutes';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Limpar from '../../Pages/Limpar';
+
 
 export function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
@@ -37,13 +40,24 @@ export function BottomTabRoutes() {
 
       options={
         {
-          tabBarIcon: ({ color }) => <TabBarIcon name="cog" color={color} />,
+          tabBarIcon: ({ color }) => <AntDesign name="infocirlceo" size={24} color={color} />,
         }
       }
       
-      name="Settings" 
+      name="Info" 
       
-      component={Settings} />
+      component={Info} />
+      <Tab.Screen 
+
+      options={
+        {
+          tabBarIcon: ({ color }) => <TabBarIcon name="cog" color={color} />,
+        }
+      }
+
+      name="Settings" 
+
+      component={Limpar} />
     </Tab.Navigator>
   );
 }

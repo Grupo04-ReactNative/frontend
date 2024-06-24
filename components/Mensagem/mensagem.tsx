@@ -7,14 +7,10 @@ interface MensagemProps {
  }
 export const Mensagem = ({textoPrincipal, textoAuxiliar} : MensagemProps) => {
     return <View style={styles.container}>
-    <Text style={styles.boldText}>{textoPrincipal}</Text>
-
+        <Text style={styles.boldText}>{textoPrincipal}</Text>
         <ScrollView style={styles.scrollContainer}>
-
             <Text style={styles.normalText}>{textoAuxiliar}</Text>
-            
         </ScrollView>
-
     </View>
 }
 

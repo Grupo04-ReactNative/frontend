@@ -13,7 +13,7 @@ const Spacer = ({ lines = 10 }: { lines?: number }) => {
 
 const styles = StyleSheet.create({
   spacerText: {
-    lineHeight: 20, // Ajuste conforme necessário
+    lineHeight: 20, 
   },
 });
 

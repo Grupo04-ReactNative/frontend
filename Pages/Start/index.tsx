@@ -11,9 +11,10 @@ import { StackParamList } from "../../Routes/HomeStackRoutes";
 
 type StartScreenNavigationProp = NativeStackNavigationProp<StackParamList, 'Start'>;
 
-
 export default function Start() {
+
     const navigation = useNavigation<StartScreenNavigationProp>()
+    
     return (
       <SafeAreaView style={styles.outerContainer}>
       <LinearGradient
@@ -25,7 +26,7 @@ export default function Start() {
         <Button 
                 isOutlined={false}
                 buttonText={'Começar'}
-                onPress={() => { navigation.navigate('Form')}}
+                onPress={() => { navigation.navigate('Nome')}}
               />
               
      </LinearGradient>

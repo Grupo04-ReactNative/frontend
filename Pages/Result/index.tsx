@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, Text, Image, ActivityIndicator, View } from "react-native";
+import { SafeAreaView, Text, ActivityIndicator, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { styles } from "./styles";
 import { PersonalidadePokemonProps, getPersonalidadePokemon } from "../../services/apiPersonalidadePokemon";
 import { Mensagem } from "../../components/Mensagem/mensagem";
 import SocialIcons from "../../components/SocialIcons/SocialIcons";
+import Carrossel from "../../components/Carrossel/carrossel";
 
 export default function Result() {
     const [personalidadePokemon, setPersonalidadePokemon] = useState<PersonalidadePokemonProps>();
@@ -64,13 +65,7 @@ export default function Result() {
     return (
         <SafeAreaView style={styles.outerContainer}>
             <LinearGradient colors={['#2403EC', '#B51AAD', '#EEC122']} style={styles.gradientContainer}>
-                <View style={styles.gridContainer}>
-                    {validSprites.map((sprite, index) => (
-                        <View key={index} style={styles.gridItem}>
-                            <Image source={{ uri: sprite }} style={styles.spriteImage} />
-                        </View>
-                    ))}
-                </View>
+                <Carrossel images={validSprites} />
                 <Mensagem
                     textoPrincipal={"Você é um " + personalidadePokemon.name}
                     textoAuxiliar={personalidadePokemon.frasePersonalidade}

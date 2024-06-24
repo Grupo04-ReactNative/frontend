@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
     },
     monthButton: {
-        width: '30%',
+        width: '40%',
         padding: 10,
         margin: 5,
         backgroundColor: 'rgba(211, 211, 211, 0.5)',

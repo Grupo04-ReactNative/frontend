@@ -8,7 +8,7 @@ interface GradientBackgroundProps {
     children: React.ReactNode;
 }
 
-const GradientBackground: React.FC<GradientBackgroundProps> = ({ colors, style, children }) => {
+const GradientBackground = ({ colors, style, children }: GradientBackgroundProps) => {
     return (
         <LinearGradient colors={colors} style={style}>
             {children}

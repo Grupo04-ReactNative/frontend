@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import AboutText from '../AboutText/aboutText';
+import AboutText from '../AboutText/AboutText';
 import { styles } from './styles';
 
 

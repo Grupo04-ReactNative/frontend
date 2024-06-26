@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 const apiSenseDetect = axios.create({
-    baseURL: "http://192.168.1.72:8079/"
+    baseURL: "http://192.168.18.4:8079/"
 })
 
 export interface SenseDetectProps {
